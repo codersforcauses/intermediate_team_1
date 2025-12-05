@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     "corsheaders",
     "healthcheck",
     "user_profile",
+    "landing_page",
 ]
 
 MIDDLEWARE = [

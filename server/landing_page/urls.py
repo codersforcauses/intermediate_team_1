@@ -3,7 +3,5 @@ from . import views
 
 app_name = "landing_page"
 urlpatterns = [
-    # path("", views.UserList.as_view(), name="user-list"),
-    # path("profile/", views.ProfileList.as_view(), name="user-list"),
-    # path("profile/<int:pk>", views.UserProfileDetail.as_view(), name="profile-detail"),
+    path("", views.main, name="home"),
 ]
