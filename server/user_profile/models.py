@@ -8,8 +8,8 @@ User = get_user_model()
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    bio = models.TextField(null=True)
-    age = models.PositiveIntegerField(null=True)
+    bio = models.TextField(blank=True)
+    age = models.PositiveIntegerField(null=True, blank=True)
 
     def __str__(self):
         return f"Profile: {self.user.username}"
