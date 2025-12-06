@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     "corsheaders",
     "healthcheck",
     "user_profile",
+    "pet.apps.PetConfig",
+    "tasks.apps.TasksConfig",
     "landing_page",
 ]
 
