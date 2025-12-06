@@ -49,7 +49,8 @@ INSTALLED_APPS = [
     "corsheaders",
     "healthcheck",
     "feedback",
-    "user_profile"
+    "user_profile",
+    "pet.apps.PetConfig",
 ]
 
 MIDDLEWARE = [
