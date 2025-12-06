@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     "pet.apps.PetConfig",
     "tasks.apps.TasksConfig",
     "landing_page",
+    "health.apps.HealthConfig",
 ]
 
 MIDDLEWARE = [

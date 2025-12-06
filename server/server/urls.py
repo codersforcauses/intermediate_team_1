@@ -29,4 +29,5 @@ urlpatterns = [
     path("pet/", include("pet.urls")),
     path("tasks/", include("tasks.urls")),
     path("home/", include("landing_page.urls")),
+    path("health/", include("health.urls"))
 ]
