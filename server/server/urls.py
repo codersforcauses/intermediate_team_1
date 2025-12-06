@@ -28,5 +28,5 @@ urlpatterns = [
     path("api/user/", include("user_profile.urls")),
     path("pet/", include("pet.urls")),
     path("tasks/", include("tasks.urls")),
-    path("home/", include("landing_page.urls")),
+    path("landing/", include("landing_page.urls")),
 ]
