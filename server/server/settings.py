@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     "feedback",
     "user_profile",
     "pet.apps.PetConfig",
+    "tasks.apps.TasksConfig",
 ]
 
 MIDDLEWARE = [
