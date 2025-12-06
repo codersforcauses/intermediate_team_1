@@ -48,7 +48,6 @@ INSTALLED_APPS = [
     "rest_framework",
     "corsheaders",
     "healthcheck",
-    "feedback",
     "user_profile",
     "pet.apps.PetConfig",
     "tasks.apps.TasksConfig",
