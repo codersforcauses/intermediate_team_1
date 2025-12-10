@@ -23,7 +23,7 @@ from django.db import models
 #     buildingNo = models.PositiveIntegerField()  # buildingNo is the same thing as streetNo in the DB diagram
 
 
-
+# NOTE: crosscheck with Annabelle's pet class
 class Pet(models.Model):
     CAT = 'cat'
     DOG = 'dog'
