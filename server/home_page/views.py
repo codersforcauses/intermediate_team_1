@@ -1,10 +1,32 @@
 from django.shortcuts import render
 import requests
+from rest_framework import generics, permissions
+from rest_framework.response import Response
+from rest_framework.views import APIView
 from django.conf import settings
 from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
+from django.apps import apps
+from django.views import View
+
+pet = apps.get_model('pet','Pet')
+tasks = apps.get_model('tasks', 'Task')
+from pet.serializers import PetSerializer
+from user_profile.permissions import IsUserOrReadOnly
+# remember to also import household and business
 
 # Create your views here.
+
+class main(View):
+    def get(self, request):
+        petTasks = tasks.objects.all().values()
+        return JsonResponse(list(petTasks), safe=False)
+
+class PetDetail(generics.RetrieveUpdateAPIView):
+    permission_classes = (permissions.IsAuthenticated, IsUserOrReadOnly)
+    queryset = pet.objects.all()
+    serializer_class = PetSerializer
+
 
 MAPBOX_SUGGEST_URL = "https://api.mapbox.com/search/searchbox/v1/suggest"
 
