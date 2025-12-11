@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     "vet.apps.VetConfig",
     "landing_page",
     "health.apps.HealthConfig",
+    "registration",
 ]
 
 MIDDLEWARE = [
