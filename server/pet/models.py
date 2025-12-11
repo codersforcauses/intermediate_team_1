@@ -1,4 +1,5 @@
 from django.db import models
+from registration.models import Household, Business
 
 # Create your models here.
 class Pet(models.Model):
@@ -8,8 +9,8 @@ class Pet(models.Model):
     breed = models.CharField(max_length=50, null=True)
     weight = models.FloatField(null=True)
     exerciseReq = models.FloatField(null=True)
-    #belongsToHouse = models.CharField(max_length=50, null=True) # Add foreign key later
-    #belongsToBusiness = models.CharField(max_length=50, null=True) # Add foreign key later
+    belongsToHouse = models.ForeignKey(Household, on_delete=models.SET_NULL, related_name="household", null=True)
+    belongsToBusiness = models.ForeignKey(Business, on_delete=models.SET_NULL, related_name="business", null=True)
     def __str__(self):
         return self.petName
 

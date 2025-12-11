@@ -8,7 +8,7 @@ class SymptomInstance(models.Model):
     extraInfo = models.TextField(null=True)
     dateAndTime = models.DateTimeField()
     def __str__(self):
-        return self.symptomType
+        return f"{self.symptomType} {self.dateAndTime}"
 
 class MedRecord(models.Model):
     forPet = models.ForeignKey(Pet, on_delete=models.CASCADE, related_name="medrec_for_pet")
