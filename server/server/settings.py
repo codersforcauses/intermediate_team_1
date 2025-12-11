@@ -53,6 +53,8 @@ INSTALLED_APPS = [
     "tasks.apps.TasksConfig",
     "dog.apps.DogConfig",
     "vet.apps.VetConfig",
+    "shop.apps.ShopConfig",
+    "registration.apps.RegistrationConfig",
     "landing_page",
 ]
 
