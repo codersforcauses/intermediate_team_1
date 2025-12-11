@@ -57,7 +57,6 @@ INSTALLED_APPS = [
     "registration.apps.RegistrationConfig",
     "landing_page",
     "health.apps.HealthConfig",
-    "registration",
 ]
 
 MIDDLEWARE = [
