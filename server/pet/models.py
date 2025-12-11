@@ -8,8 +8,8 @@ class Pet(models.Model):
     breed = models.CharField(max_length=50, null=True)
     weight = models.FloatField(null=True)
     exerciseReq = models.FloatField(null=True)
-    belongsToHouse = models.CharField(max_length=50, null=True) # Add foreign key later
-    belongsToBusiness = models.CharField(max_length=50, null=True) # Add foreign key later
+    #belongsToHouse = models.CharField(max_length=50, null=True) # Add foreign key later
+    #belongsToBusiness = models.CharField(max_length=50, null=True) # Add foreign key later
     def __str__(self):
         return self.petName
 
