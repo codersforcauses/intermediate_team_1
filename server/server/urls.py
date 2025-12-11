@@ -31,4 +31,5 @@ urlpatterns = [
     path("home/", include("landing_page.urls")),
     path("dog/", include("dog.urls")),
     path("vet/", include("vet.urls")),
+    path("health/", include("health.urls"))
 ]

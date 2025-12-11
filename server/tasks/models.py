@@ -8,3 +8,5 @@ class Task(models.Model):
     descr = models.TextField(null=True)
     due = models.DateTimeField()
     isComplete = models.BooleanField(default=False)
+    def __str__(self):
+        return self.title
