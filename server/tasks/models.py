@@ -1,10 +1,12 @@
 from django.db import models
-import pet
+from pet.models import Pet
 
 # Create your models here.
 class Task(models.Model):
-    forPet = models.ForeignKey(pet.models.Pet, on_delete=models.CASCADE, related_name="task_for_pet")
+    forPet = models.ForeignKey(Pet, on_delete=models.CASCADE, related_name="task_for_pet")
     title = models.CharField(max_length=200)
     descr = models.TextField(null=True)
     due = models.DateTimeField()
     isComplete = models.BooleanField(default=False)
+    def __str__(self):
+        return self.title

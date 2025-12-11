@@ -54,6 +54,8 @@ INSTALLED_APPS = [
     "dog.apps.DogConfig",
     "vet.apps.VetConfig",
     "landing_page",
+    "health.apps.HealthConfig",
+    "registration",
 ]
 
 MAPBOX_ACCESS_TOKEN = 'pk.eyJ1IjoiaXJvaGE4ODg4IiwiYSI6ImNtaXR3YWFvdzA5eHEzZHM4dzB2cDI2dXAifQ.ZXNuWEnqCHBnT79aW8fBNg'
