@@ -7,6 +7,8 @@ class SymptomInstance(models.Model):
     symptomType = models.CharField(max_length=200)
     extraInfo = models.TextField(null=True)
     dateAndTime = models.DateTimeField()
+    def __str__(self):
+        return self.symptomType
 
 class MedRecord(models.Model):
     forPet = models.ForeignKey(Pet, on_delete=models.CASCADE, related_name="medrec_for_pet")
@@ -14,3 +16,5 @@ class MedRecord(models.Model):
     recordDate = models.DateField()
     descr = models.TextField(null=True)
     # add file link later
+    def __str__(self):
+        return self.title
