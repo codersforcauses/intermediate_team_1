@@ -28,9 +28,10 @@ urlpatterns = [
     path("api/user/", include("user_profile.urls")),
     path("pet/", include("pet.urls")),
     path("tasks/", include("tasks.urls")),
-    path("home/", include("landing_page.urls")),
+    path("landing/", include("landing_page.urls")),
     path("dog/", include("dog.urls")),
     path("vet/", include("vet.urls")),
+    path("home/", include("home_page.urls")),
     path("shop/", include("shop.urls")),
     path("health/", include("health.urls"))
 ]

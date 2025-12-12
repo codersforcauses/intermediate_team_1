@@ -59,6 +59,10 @@ INSTALLED_APPS = [
     "health.apps.HealthConfig",
 ]
 
+MAPBOX_ACCESS_TOKEN = 'pk.eyJ1IjoiaXJvaGE4ODg4IiwiYSI6ImNtaXR3YWFvdzA5eHEzZHM4dzB2cDI2dXAifQ.ZXNuWEnqCHBnT79aW8fBNg'
+
+
+
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
