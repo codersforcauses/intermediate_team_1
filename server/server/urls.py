@@ -33,5 +33,7 @@ urlpatterns = [
     path("vet/", include("vet.urls")),
     path("home/", include("home_page.urls")),
     path("shop/", include("shop.urls")),
-    path("health/", include("health.urls"))
+    path("health/", include("health.urls")),
+    path("registration/", include("registration.urls")),
+    path("profile/", include("profilePage.urls")),
 ]
