@@ -6,6 +6,7 @@ const isWindowsDevContainer = () =>
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    devIndicators: false,
   reactStrictMode: true,
   // dumb fix for windows docker
   webpack: isWindowsDevContainer()
