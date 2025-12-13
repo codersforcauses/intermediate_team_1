@@ -3,7 +3,8 @@ from django.db import models
 from pet.models import Pet
 from tasks.models import Task
 from registration.models import Household, Business, PetCarer
-from vet.models import VetClinic
+from vet.models import VetClinic, VetAppointment
+from health.models import SymptomInstance
 
 # Create your models here.
 
@@ -60,30 +61,3 @@ from vet.models import VetClinic
 #     # [insert Business foreign key here]
 #     def __str__(self):
 #         return self.petID
-
-
-# NOTE: crosscheck with Annabelle's tasks class
-# class PetTasks(models.Model):  # the same thing as Tasks in the DB diagram
-#     petID = models.ForeignKey(Pet, on_delete=models.CASCADE)
-#     title = models.CharField(max_length=100)
-#     description = models.CharField(max_length=1000)
-#     due = models.DateTimeField()
-#     isComplete = models.BooleanField(default=False)
-#     def __str__(self):
-#         return self.title
-
-
-class SymptomInstance(models.Model):
-    petID = models.ForeignKey(Pet, on_delete=models.CASCADE)
-    symptomType = models.CharField(max_length=100)
-    extraInfo = models.CharField(max_length=1000)
-    dateAndTime = models.DateTimeField()
-    def __str__(self):
-        return self.symptomType
-
-class VetAppointment(models.Model):
-    petID = models.ForeignKey(Pet, on_delete=models.CASCADE)
-    dateAndTime = models.DateTimeField()
-    vetClinic - models.ForeignKey(VetClinic, on_delete=models.CASCADE)
-    def __str__(self):
-        return f"{self.petID} - {self.dateAndTime}"
