@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render
 from .models import Pricing, Feature
 
@@ -6,4 +7,4 @@ from .models import Pricing, Feature
 
 def main(request):
     plans = Pricing.objects.prefetch_related("features").all()
-    return render(request, "landing_page/landing_page_html.html", {"plans": plans})
+    return HttpResponse("This is the landing page")
