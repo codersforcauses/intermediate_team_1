@@ -1,10 +1,10 @@
 "use client";
 
-import { Dot, Plus,Settings } from "lucide-react";
+import { Dot, Plus, Settings } from "lucide-react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "./avatar";
 import { Button } from "./button";
-import { TextBody,TextTitle } from "./text-styles";
+import { TextBody, TextTitle } from "./text-styles";
 
 interface PetHeaderProps {
   className?: string;
@@ -21,7 +21,7 @@ interface PetHeaderProps {
 export function PetHeader(props: PetHeaderProps) {
   return (
     <>
-      <div className="mx-[7vw] flex h-[175px] flex-col justify-evenly">
+      <div className="mx-[7vw] flex h-[250px] flex-col justify-evenly lg:h-[175px]">
         <div className="flex flex-wrap justify-between">
           <div className="flex">
             <Avatar className="h-[75] w-[75]">
@@ -41,7 +41,7 @@ export function PetHeader(props: PetHeaderProps) {
               </TextBody>
             </div>
           </div>
-          <div className="mt-5 flex items-center gap-5 md:mt-0">
+          <div className="mt-5 flex items-center gap-5 lg:mt-0">
             <Button
               className="gap-2 rounded-full bg-gray-700 font-light tracking-wider hover:bg-gray-800"
               onClick={props.onClickSettings}
@@ -57,7 +57,7 @@ export function PetHeader(props: PetHeaderProps) {
             </Button>
           </div>
         </div>
-        <hr></hr>
+        <hr className="self-center md:self-auto"></hr>
       </div>
     </>
   );
