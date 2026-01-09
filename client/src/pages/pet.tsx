@@ -8,19 +8,21 @@ import { EventCard } from "@/components/ui/event-card";
 import { ChartBarHorizontal } from "@/components/ui/health-chart";
 import { HealthOverview } from "@/components/ui/health-overview";
 import { PetHeader } from "@/components/ui/pet-page-header";
+import { PetSettings } from "@/components/ui/pet-settings-menu";
 import { TaskCarousel } from "@/components/ui/pet-task-carousel";
 import { TextTitle } from "@/components/ui/text-styles";
 import { dm_sans } from "@/lib/fonts";
 
 export default function Default() {
   const [taskMenu, setTaskMenu] = useState(false);
+  const [settingsMenu, setSettingsMenu] = useState(false);
 
   return (
     <div className={dm_sans.className}>
       <h1 className="flex justify-center p-10"> Navbar </h1>
       <PetHeader
         onClickTask={() => setTaskMenu(true)}
-        onClickSettings={() => "state function here"}
+        onClickSettings={() => setSettingsMenu(true)}
         petImg=""
         petAlt="Spaghetti's Profile Image"
         petInit="S"
@@ -32,6 +34,15 @@ export default function Default() {
       <div className="mx-[7vw]">
         {taskMenu === true && (
           <AddTask onClickClose={() => setTaskMenu(false)} />
+        )}
+
+        {settingsMenu === true && (
+          <PetSettings
+            petName="Spaghetti"
+            petType="Cat"
+            petDOB="01/06/2020"
+            onClickClose={() => setSettingsMenu(false)}
+          />
         )}
 
         <TextTitle className="mt-5 text-3xl"> Upcoming Tasks </TextTitle>
