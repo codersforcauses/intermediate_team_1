@@ -2,6 +2,7 @@ import { Check, Plus } from "lucide-react";
 import { useState } from "react";
 
 import { AddEvent } from "@/components/ui/add-event-menu";
+import { AddHealthEvent } from "@/components/ui/add-health-event-menu";
 import { AddTask } from "@/components/ui/add-task-menu";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
@@ -18,6 +19,7 @@ export default function Default() {
   const [taskMenu, setTaskMenu] = useState(false);
   const [settingsMenu, setSettingsMenu] = useState(false);
   const [eventMenu, setEventMenu] = useState(false);
+  const [healthMenu, setHealthMenu] = useState(false);
 
   return (
     <div className={dm_sans.className}>
@@ -99,7 +101,7 @@ export default function Default() {
             <Button
               className="mt-5 w-full p-5"
               variant="outline"
-              onClick={() => "Add function later"}
+              onClick={() => setHealthMenu(true)}
             >
               <Plus className="mr-1" /> Add health event
             </Button>
@@ -108,6 +110,9 @@ export default function Default() {
             <HealthOverview title="Vomit" occurrences="3" />
           </div>
         </div>
+        {healthMenu === true && (
+          <AddHealthEvent onClickClose={() => setHealthMenu(false)} />
+        )}
       </div>
       <div className="h-[75]"></div>
     </div>
