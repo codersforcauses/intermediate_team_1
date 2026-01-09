@@ -1,5 +1,7 @@
 import { Check, Plus } from "lucide-react";
+import { useState } from "react";
 
+import { AddTask } from "@/components/ui/add-task-menu";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import { EventCard } from "@/components/ui/event-card";
@@ -11,11 +13,13 @@ import { TextTitle } from "@/components/ui/text-styles";
 import { dm_sans } from "@/lib/fonts";
 
 export default function Default() {
+  const [taskMenu, setTaskMenu] = useState(false);
+
   return (
     <div className={dm_sans.className}>
       <h1 className="flex justify-center p-10"> Navbar </h1>
       <PetHeader
-        onClickTask={() => "state function here"}
+        onClickTask={() => setTaskMenu(true)}
         onClickSettings={() => "state function here"}
         petImg=""
         petAlt="Spaghetti's Profile Image"
@@ -25,8 +29,12 @@ export default function Default() {
         petAge="5 yrs 6 months"
       />
 
-      <div className="mx-[7vw] mt-5">
-        <TextTitle className="text-3xl"> Upcoming Tasks </TextTitle>
+      <div className="mx-[7vw]">
+        {taskMenu === true && (
+          <AddTask onClickClose={() => setTaskMenu(false)} />
+        )}
+
+        <TextTitle className="mt-5 text-3xl"> Upcoming Tasks </TextTitle>
         <div className="flex justify-center md:mx-0">
           <TaskCarousel />
         </div>
