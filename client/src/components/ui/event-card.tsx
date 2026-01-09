@@ -33,15 +33,17 @@ export function EventCard(props: EventCardProps) {
           {props.date}
         </CardDescription>
         <CardTitle className="pt-2 text-2xl">{props.title}</CardTitle>
-        <div className="flex gap-3 pt-1">
-          <UserLabel
-            img={props.usrImg}
-            alt={props.usrAlt}
-            colour={props.usrColour}
-            initials={props.usrInit}
-            name={"Created by " + props.usrName}
-            assignee={props.usrAssignee}
-          />
+        <div className="flex gap-1 pt-1 md:gap-3">
+          <div className="hidden md:flex">
+            <UserLabel
+              img={props.usrImg}
+              alt={props.usrAlt}
+              colour={props.usrColour}
+              initials={props.usrInit}
+              name={"Created by " + props.usrName}
+              assignee={props.usrAssignee}
+            />
+          </div>
           <ClockTime id="clocktest" time={props.time} />
           <LocLabel id="loctest" location={props.location} />
         </div>
