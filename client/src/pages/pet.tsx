@@ -1,6 +1,7 @@
 import { Check, Plus } from "lucide-react";
 import { useState } from "react";
 
+import { AddEvent } from "@/components/ui/add-event-menu";
 import { AddTask } from "@/components/ui/add-task-menu";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
@@ -16,6 +17,7 @@ import { dm_sans } from "@/lib/fonts";
 export default function Default() {
   const [taskMenu, setTaskMenu] = useState(false);
   const [settingsMenu, setSettingsMenu] = useState(false);
+  const [eventMenu, setEventMenu] = useState(false);
 
   return (
     <div className={dm_sans.className}>
@@ -74,12 +76,15 @@ export default function Default() {
             <Button
               className="mt-5 w-full p-5"
               variant="outline"
-              onClick={() => "Add function later"}
+              onClick={() => setEventMenu(true)}
             >
               <Plus className="mr-1" /> Add event
             </Button>
           </div>
         </div>
+        {eventMenu === true && (
+          <AddEvent onClickClose={() => setEventMenu(false)} />
+        )}
 
         <TextTitle className="mt-10 text-3xl"> Health </TextTitle>
         <div className="flex flex-wrap gap-x-10">
