@@ -1,5 +1,3 @@
-"use client";
-
 import { Bar, BarChart, LabelList, XAxis, YAxis } from "recharts";
 
 import {
@@ -9,7 +7,7 @@ import {
   CardFooter,
   CardHeader,
 } from "@/components/ui/card";
-import { type ChartConfig,ChartContainer } from "@/components/ui/chart";
+import { type ChartConfig, ChartContainer } from "@/components/ui/chart";
 
 export const description = "A horizontal bar chart";
 

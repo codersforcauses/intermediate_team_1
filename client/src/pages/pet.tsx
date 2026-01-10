@@ -1,5 +1,5 @@
 import { Check, Plus } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { AddEvent } from "@/components/ui/add-event-menu";
 import { AddHealthEvent } from "@/components/ui/add-health-event-menu";
@@ -15,11 +15,49 @@ import { TaskCarousel } from "@/components/ui/pet-task-carousel";
 import { TextTitle } from "@/components/ui/text-styles";
 import { dm_sans } from "@/lib/fonts";
 
+interface petInfoResponse {
+  name: string;
+  dob: string;
+  type: string;
+  img: string;
+}
+
 export default function Default() {
   const [taskMenu, setTaskMenu] = useState(false);
   const [settingsMenu, setSettingsMenu] = useState(false);
   const [eventMenu, setEventMenu] = useState(false);
   const [healthMenu, setHealthMenu] = useState(false);
+
+  const [petInfo, setPetInfo] = useState<petInfoResponse>();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await fetch("http://localhost:8000/pet/");
+      const petInfo = await data.json();
+      setPetInfo(petInfo);
+    };
+
+    fetchData();
+  }, []);
+
+  const formatPetAge = () => {
+    if (!petInfo) return null;
+    const dob = new Date("2020-12-01");
+    const now = Date.now();
+    const age = now - dob.getTime();
+    const yearsAndMonths = age / 1000 / 60 / 60 / 24 / 365.25;
+    const years = Math.floor(yearsAndMonths);
+    const months = Math.floor((yearsAndMonths % 1) * 12);
+    if (years == 1 && months == 1) {
+      return `${years} year ${months} month`;
+    } else if (years > 1 && months == 1) {
+      return `${years} years ${months} month`;
+    } else if (years == 1 && months > 1) {
+      return `${years} year ${months} months`;
+    } else {
+      return `${years} years ${months} months`;
+    }
+  };
 
   return (
     <div className={dm_sans.className}>
@@ -27,12 +65,12 @@ export default function Default() {
       <PetHeader
         onClickTask={() => setTaskMenu(true)}
         onClickSettings={() => setSettingsMenu(true)}
-        petImg=""
+        petImg={petInfo?.img || ""}
         petAlt="Spaghetti's Profile Image"
         petInit="S"
-        petName="Spaghetti (example pet)"
-        petType="Cat"
-        petAge="5 yrs 6 months"
+        petName={petInfo?.name || "Loading..."}
+        petType={petInfo?.type || "Loading..."}
+        petAge={formatPetAge() || "Loading..."}
       />
 
       <div className="mx-[7vw]">
@@ -42,9 +80,9 @@ export default function Default() {
 
         {settingsMenu === true && (
           <PetSettings
-            petName="Spaghetti"
-            petType="Cat"
-            petDOB="01/06/2020"
+            petName={petInfo?.name || "Loading..."}
+            petType={petInfo?.type || "Loading..."}
+            petDOB={petInfo?.dob || "Loading..."}
             onClickClose={() => setSettingsMenu(false)}
           />
         )}

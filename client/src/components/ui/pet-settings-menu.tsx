@@ -1,5 +1,3 @@
-"use client";
-
 import { Check, X } from "lucide-react";
 
 import { DOBPicker } from "@/components/ui/dob-picker";

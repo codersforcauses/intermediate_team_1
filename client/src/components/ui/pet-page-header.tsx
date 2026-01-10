@@ -1,5 +1,3 @@
-"use client";
-
 import { Dot, Plus, Settings } from "lucide-react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "./avatar";
@@ -28,14 +26,14 @@ export function PetHeader(props: PetHeaderProps) {
               <AvatarImage
                 src={props.petImg}
                 alt={props.petAlt}
-                className="h-[75] w-[75]"
+                className="h-[75] w-[75] rounded-full object-cover"
               />
               <AvatarFallback className="h-[75] w-[75] text-xl">
                 {props.petInit}
               </AvatarFallback>
             </Avatar>
             <div className="ml-10 flex flex-col gap-y-2 self-center">
-              <TextTitle> {props.petName} </TextTitle>
+              <TextTitle> {props.petName}</TextTitle>
               <TextBody className="flex">
                 {props.petType} <Dot /> {props.petAge}
               </TextBody>
@@ -43,7 +41,7 @@ export function PetHeader(props: PetHeaderProps) {
           </div>
           <div className="mt-5 flex items-center gap-5 lg:mt-0">
             <Button
-              className="gap-2 rounded-full bg-gray-700 font-light tracking-wider hover:bg-gray-800"
+              className="gap-2 rounded-full bg-black font-light tracking-wider hover:bg-gray-800"
               onClick={props.onClickSettings}
             >
               <Settings /> Pet Settings
