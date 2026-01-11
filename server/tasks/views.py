@@ -1,6 +1,16 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
+from rest_framework.renderers import JSONRenderer
+
+from tasks.models import Task
+from tasks.serializers import TaskSerializer
 
 # Create your views here.
+# https://www.django-rest-framework.org/tutorial/1-serialization/
+@api_view(('GET',))
 def index(request):
-    return HttpResponse("Hello, world. This is the tasks page of Fetch!, a pet care app.")
+    data = Task.objects.all()
+    serializer = TaskSerializer(data, many=True)
+    return JsonResponse(serializer.data, safe=False)

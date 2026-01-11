@@ -50,9 +50,9 @@ export default function Default() {
     const months = Math.floor((yearsAndMonths % 1) * 12);
     if (years == 1 && months == 1) {
       return `${years} year ${months} month`;
-    } else if (years > 1 && months == 1) {
+    } else if ((years > 1 || years == 0) && months == 1) {
       return `${years} years ${months} month`;
-    } else if (years == 1 && months > 1) {
+    } else if (years == 1 && (months > 1 || months == 0)) {
       return `${years} year ${months} months`;
     } else {
       return `${years} years ${months} months`;
@@ -68,9 +68,9 @@ export default function Default() {
         petImg={petInfo?.img || ""}
         petAlt="Spaghetti's Profile Image"
         petInit="S"
-        petName={petInfo?.name || "Loading..."}
-        petType={petInfo?.type || "Loading..."}
-        petAge={formatPetAge() || "Loading..."}
+        petName={petInfo?.name || ""}
+        petType={petInfo?.type || ""}
+        petAge={formatPetAge() || ""}
       />
 
       <div className="mx-[7vw]">
@@ -80,9 +80,9 @@ export default function Default() {
 
         {settingsMenu === true && (
           <PetSettings
-            petName={petInfo?.name || "Loading..."}
-            petType={petInfo?.type || "Loading..."}
-            petDOB={petInfo?.dob || "Loading..."}
+            petName={petInfo?.name || ""}
+            petType={petInfo?.type || ""}
+            petDOB={petInfo?.dob || ""}
             onClickClose={() => setSettingsMenu(false)}
           />
         )}
