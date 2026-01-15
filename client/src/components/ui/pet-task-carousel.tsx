@@ -51,16 +51,26 @@ export function TaskCarousel() {
 
   function formatDueDate(id: number, type: "day" | "time") {
     const due = getTaskInfo(id, "due") || "";
-    const newDue = due.slice(0, 10);
-    const date = new Date(newDue);
-    const newDate = date.toString();
 
     if (type === "day") {
+      const newDue = due.slice(0, 10);
+      const date = new Date(newDue);
+      const newDate = date.toString();
       const finalDate = newDate.slice(0, 16);
       return finalDate;
     } else if (type === "time") {
-      const finalTime = newDate.slice(16, 21);
-      return finalTime;
+      const time = due.slice(11, -4);
+      const convertHour = Number(time.slice(0, 2));
+      if (convertHour > 12) {
+        const finalTime = (convertHour - 12).toString() + time.slice(2) + " pm";
+        return finalTime;
+      } else if (time.startsWith("0")) {
+        const finalTime = time.slice(1) + " am";
+        return finalTime;
+      } else {
+        const finalTime = time + " am";
+        return finalTime;
+      }
     }
   }
 
@@ -83,43 +93,43 @@ export function TaskCarousel() {
         </CarouselItem>
         <CarouselItem key={2} className="basis-sm lg:basis-md -ml-10 mr-5">
           <TaskCard
-            date="Wednesday, July 7th, 2025"
-            title="Flea Medicine"
+            date={formatDueDate(2, "day") || ""}
+            title={getTaskInfo(2, "title") || ""}
             usrImg=""
             usrAlt="@username"
             usrColour="bg-blue-200"
             usrInit="IT"
             usrName="Someone"
             usrAssignee="exampletask1"
-            time="5:00 pm"
+            time={formatDueDate(2, "time") || ""}
           />
         </CarouselItem>
         <CarouselItem key={3} className="basis-sm lg:basis-md -ml-10 mr-5">
           <TaskCard
-            date="Wednesday, September 24th, 2025"
-            title="Long Title Long Title Long Title Long Title Long Title"
+            date={formatDueDate(3, "day") || ""}
+            title={getTaskInfo(3, "title") || ""}
             usrImg=""
             usrAlt="@username"
             usrColour="bg-emerald-200"
             usrInit="CS"
             usrName="Someone Else Long Name"
             usrAssignee="exampletask2"
-            time="10:00 pm"
-            descr="50.0 g x Premium Cat Biscuits 50.0 g x Premium Cat Biscuits 50.0 g x Premium Cat Biscuits 50.0 g x Premium Cat Biscuits 50.0 g x Premium Cat Biscuits"
+            time={formatDueDate(3, "time") || ""}
+            descr={getTaskInfo(3, "descr") || ""}
           />
         </CarouselItem>
         <CarouselItem key={4} className="basis-sm lg:basis-md -ml-10 mr-5">
           <TaskCard
-            date="Wednesday, July 7th, 2025"
-            title="Feed Spaghetti"
+            date={formatDueDate(4, "day") || ""}
+            title={getTaskInfo(4, "title") || ""}
             usrImg=""
             usrAlt="@username"
             usrColour="bg-gray-200"
             usrInit="CS"
             usrName="You"
             usrAssignee="exampletask3"
-            time="5:00 pm"
-            descr="50.0 g x Premium Cat Biscuits"
+            time={formatDueDate(4, "time") || ""}
+            descr={getTaskInfo(4, "descr") || ""}
           />
         </CarouselItem>
       </CarouselContent>
