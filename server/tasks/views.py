@@ -14,3 +14,8 @@ def index(request):
     data = Task.objects.all()
     serializer = TaskSerializer(data, many=True)
     return JsonResponse(serializer.data, safe=False)
+
+def pet_filter(request, forPet):
+    data = Task.objects.filter(forPet=forPet)
+    serializer = TaskSerializer(data, many=True)
+    return JsonResponse(serializer.data, safe=False)

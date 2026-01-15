@@ -24,10 +24,13 @@ interface taskInfoResponse {
 
 export function TaskCarousel() {
   const [taskInfo, setTaskInfo] = useState<taskInfoResponse>();
+  const petID = 1; // Will need function to get pet id.
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await fetch("http://localhost:8000/tasks/");
+      const data = await fetch(
+        "http://localhost:8000/tasks/pet/" + petID.toString(),
+      );
       const taskInfo = await data.json();
       setTaskInfo(taskInfo);
     };
@@ -35,7 +38,7 @@ export function TaskCarousel() {
     fetchData();
   }, []);
 
-  // Not very efficient, and need to modify for multiple pets.
+  // Not very efficient.
   function getTaskInfo(id: number, item: keyof taskInfoObject) {
     if (taskInfo) {
       let task: keyof taskInfoResponse;
